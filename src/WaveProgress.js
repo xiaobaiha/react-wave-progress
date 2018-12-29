@@ -29,7 +29,7 @@ class WaveProgress extends Component {
         this.border.stroke();
     }
     drawWave = () => {
-        this.offset += this;
+        this.offset += 1;
         if (this.offset === 2 * this.r) {
             this.offset = 0;
         }
