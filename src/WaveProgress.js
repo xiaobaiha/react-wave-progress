@@ -19,14 +19,20 @@ class WaveProgress extends Component {
         this.ctx.closePath();
         this.ctx.clip();
     }
-    drawCircle = (r) => {
-        this.border.fillStyle = 'white';
+    redrawCircle = () => {
+        this.ctx.clearRect(0, 0, this.r * 2, this.r * 2);
+        this.border.strokeStyle = '#87CEFA';
         const lineWidth = 2;
         this.border.lineWidth = lineWidth;
         this.border.beginPath();
         this.border.arc(this.r, this.r, this.r - lineWidth / 2, 0, 2 * Math.PI, true);
         this.border.closePath();
         this.border.stroke();
+        const fontSize = this.r / 3;
+        this.border.font = fontSize + 'px Arial';
+        this.border.textAlign = 'center';
+        this.border.fillStyle = "#63B8FF";
+        this.border.fillText("50%", this.r, this.r + fontSize / 4)
     }
     drawWave = () => {
         this.offset += 1;
@@ -59,9 +65,12 @@ class WaveProgress extends Component {
             this.ctx = canvas.getContext('2d');
             this.border = this.borderCanvas.current.getContext('2d');
             this.clipCircle(this.r - 5);
-            this.drawCircle(this.r);
+            this.redrawCircle(this.r);
             requestAnimationFrame(this.draw);
         }
+    }
+    componentDidUpdate() {
+        this.redrawCircle();
     }
     render() {
         return (

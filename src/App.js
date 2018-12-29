@@ -6,7 +6,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <WaveProgress r={50} />
+        <WaveProgress r={100} />
       </div>
     );
   }
