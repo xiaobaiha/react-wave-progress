@@ -36,8 +36,8 @@ class WaveProgress extends Component {
     }
     drawWave = () => {
         const { percentage } = this.props;
-        this.offset += 2;
-        if (this.offset === 2 * this.r) {
+        this.offset += this.r / 50;
+        if (this.offset >= 2 * this.r) {
             this.offset = 0;
         }
         let percentageOffset;
@@ -70,7 +70,7 @@ class WaveProgress extends Component {
         if (canvas.getContext) {
             this.ctx = canvas.getContext('2d');
             this.border = this.borderCanvas.current.getContext('2d');
-            this.clipCircle(this.r - 5);
+            this.clipCircle(this.r - this.r / 10);
             this.redrawCircle(this.r);
             requestAnimationFrame(this.draw);
         }
