@@ -5,8 +5,8 @@ import WaveProgress from './WaveProgress';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <WaveProgress r={100} />
+      <div className="">
+        <WaveProgress r={100} percentage={90} />
       </div>
     );
   }

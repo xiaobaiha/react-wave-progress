@@ -32,22 +32,28 @@ class WaveProgress extends Component {
         this.border.font = fontSize + 'px Arial';
         this.border.textAlign = 'center';
         this.border.fillStyle = "#63B8FF";
-        this.border.fillText("50%", this.r, this.r + fontSize / 4)
+        this.border.fillText(this.props.percentage + "%", this.r, this.r + fontSize / 4)
     }
     drawWave = () => {
-        this.offset += 1;
+        const { percentage } = this.props;
+        this.offset += 2;
         if (this.offset === 2 * this.r) {
             this.offset = 0;
         }
-        console.log(this.offset)
+        let percentageOffset;
+        if (typeof percentage === 'number' && percentage >= 0 && percentage <= 100) {
+            percentageOffset = 2 * this.r * percentage / 100 - this.r;
+        } else {
+            percentageOffset = - this.r;
+        }
         const offsetHeight = this.r / 5;
         this.ctx.beginPath();
         this.ctx.fillStyle = '#B0E2FF';
-        this.ctx.moveTo(-2 * this.r + this.offset, this.r);
-        this.ctx.quadraticCurveTo(-3 * this.r / 2 + this.offset, this.r - offsetHeight, -this.r + this.offset, this.r);
-        this.ctx.quadraticCurveTo(-this.r / 2 + this.offset, this.r + offsetHeight, 0 + this.offset, this.r);
-        this.ctx.quadraticCurveTo(this.r / 2 + this.offset, this.r - offsetHeight, this.r + this.offset, this.r);
-        this.ctx.quadraticCurveTo(3 * this.r / 2 + this.offset, this.r + offsetHeight, 2 * this.r + this.offset, this.r);
+        this.ctx.moveTo(-2 * this.r + this.offset, this.r - percentageOffset);
+        this.ctx.quadraticCurveTo(-3 * this.r / 2 + this.offset, this.r - offsetHeight - percentageOffset, -this.r + this.offset, this.r - percentageOffset);
+        this.ctx.quadraticCurveTo(-this.r / 2 + this.offset, this.r + offsetHeight - percentageOffset, 0 + this.offset, this.r - percentageOffset);
+        this.ctx.quadraticCurveTo(this.r / 2 + this.offset, this.r - offsetHeight - percentageOffset, this.r + this.offset, this.r - percentageOffset);
+        this.ctx.quadraticCurveTo(3 * this.r / 2 + this.offset, this.r + offsetHeight - percentageOffset, 2 * this.r + this.offset, this.r - percentageOffset);
         this.ctx.lineTo(2 * this.r + this.offset, 2 * this.r);
         this.ctx.lineTo(-2 * this.r + this.offset, 2 * this.r);
         this.ctx.lineTo(-2 * this.r + this.offset, this.r);
