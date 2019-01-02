@@ -9,6 +9,12 @@ class WaveProgress extends Component {
             console.error("Invalid radius(props.r):", props.r);
             this.r = 50;
         }
+        if (props.percentage && !isNaN(+props.percentage)) {
+            this.percentage = +props.percentage;
+        } else {
+            console.error("Invalid percentage(props.percentage):", props.percentage);
+            this.percentage = 0;
+        }
         this.canvas = React.createRef();
         this.borderCanvas = React.createRef();
         this.offset = 0;
@@ -32,10 +38,10 @@ class WaveProgress extends Component {
         this.border.font = fontSize + 'px Arial';
         this.border.textAlign = 'center';
         this.border.fillStyle = "#63B8FF";
-        this.border.fillText(this.props.percentage + "%", this.r, this.r + fontSize / 4)
+        this.border.fillText(this.percentage + "%", this.r, this.r + fontSize / 4)
     }
     drawWave = () => {
-        const { percentage } = this.props;
+        const { percentage } = this;
         this.offset += this.r / 50;
         if (this.offset >= 2 * this.r) {
             this.offset = 0;
