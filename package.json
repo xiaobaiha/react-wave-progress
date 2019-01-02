@@ -1,7 +1,6 @@
 {
   "name": "react-wave-progress",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "babel-preset-es2015": "^6.24.1",
     "react": "^16.7.0",
