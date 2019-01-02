@@ -1,6 +1,6 @@
 {
   "name": "react-wave-progress",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "dependencies": {
     "react": "^16.7.0",
     "react-dom": "^16.7.0"
