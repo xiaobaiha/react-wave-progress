@@ -1,14 +1,14 @@
 {
   "name": "react-wave-progress",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "files": [
     "core",
     "index.js",
     "docs"
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/xiaobaiha/react-wave-progress.git"
+    "type": "git",
+    "url": "https://github.com/xiaobaiha/react-wave-progress.git"
   },
   "license": "ISC",
   "dependencies": {
