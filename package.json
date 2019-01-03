@@ -1,6 +1,6 @@
 {
   "name": "react-wave-progress",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "files": [
     "core",
     "index.js",
