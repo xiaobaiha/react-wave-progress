@@ -7,9 +7,9 @@ const themes = {
         wave: '#B0E2FF'
     },
     dark: {
-        border: '#0000FF',
-        text: '#E0FFFF',
-        wave: '#4876FF'
+        border: '#1874CD',
+        text: '#87CEFF',
+        wave: '#6495ED'
     }
 }
 class WaveProgress extends Component {
