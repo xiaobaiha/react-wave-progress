@@ -30,3 +30,4 @@ import WaveProgress from 'react-wave-progress'
 |-|-|-|
 |r|The radius of the circle.|100|
 |percentage|The process in percentage.[0, 100]|50|
+|theme|'light' \| 'dark'|'light'|
