@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
 
+const themes = {
+    light: {
+        border: '#87CEFA',
+        text: '#63B8FF',
+        wave: '#B0E2FF'
+    },
+    dark: {
+        border: '#0000FF',
+        text: '#E0FFFF',
+        wave: '#4876FF'
+    }
+}
 class WaveProgress extends Component {
     constructor(props) {
         super(props);
@@ -15,6 +27,7 @@ class WaveProgress extends Component {
             console.error("Invalid percentage(props.percentage):", props.percentage);
             this.percentage = 0;
         }
+        this.theme = Object.keys(themes).includes(props.theme)? themes[props.theme]: themes['light'];
         this.canvas = React.createRef();
         this.borderCanvas = React.createRef();
         this.offset = 0;
@@ -27,7 +40,7 @@ class WaveProgress extends Component {
     }
     redrawCircle = () => {
         this.ctx.clearRect(0, 0, this.r * 2, this.r * 2);
-        this.border.strokeStyle = '#87CEFA';
+        this.border.strokeStyle = this.theme.border;
         const lineWidth = 2;
         this.border.lineWidth = lineWidth;
         this.border.beginPath();
@@ -37,7 +50,7 @@ class WaveProgress extends Component {
         const fontSize = this.r / 3;
         this.border.font = fontSize + 'px Arial';
         this.border.textAlign = 'center';
-        this.border.fillStyle = "#63B8FF";
+        this.border.fillStyle = this.theme.text;
         this.border.fillText(this.percentage + "%", this.r, this.r + fontSize / 4)
     }
     drawWave = () => {
@@ -54,7 +67,7 @@ class WaveProgress extends Component {
         }
         const offsetHeight = this.r / 5;
         this.ctx.beginPath();
-        this.ctx.fillStyle = '#B0E2FF';
+        this.ctx.fillStyle = this.theme.wave;
         this.ctx.moveTo(-2 * this.r + this.offset, this.r - percentageOffset);
         this.ctx.quadraticCurveTo(-3 * this.r / 2 + this.offset, this.r - offsetHeight - percentageOffset, -this.r + this.offset, this.r - percentageOffset);
         this.ctx.quadraticCurveTo(-this.r / 2 + this.offset, this.r + offsetHeight - percentageOffset, 0 + this.offset, this.r - percentageOffset);
